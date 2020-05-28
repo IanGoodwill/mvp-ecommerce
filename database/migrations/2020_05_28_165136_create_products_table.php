@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('brand');
             $table->string('image');
             $table->unsignedInteger('units')->default(0);
             $table->decimal('price');
