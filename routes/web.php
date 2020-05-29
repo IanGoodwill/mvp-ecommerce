@@ -23,13 +23,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource( 'products', 'ProductController' );
 
-Route::product( 'newProducts', 'ProductController@newProducts' );
+Route::get( 'newProducts', 'ProductController@newProducts' );
 
-Route::product( 'productBrandArcteryx', 'ProductController@productBrandArcteryx' );
+Route::get( 'productBrandArcteryx', 'ProductController@productBrandArcteryx' );
 
-Route::product( 'productBrandEddieBauer', 'ProductController@productBrandEddieBauer' );
+Route::get( 'productBrandEddieBauer', 'ProductController@productBrandEddieBauer' );
 
-Route::product( 'productBrandNike', 'ProductController@productBrandNike' );
+Route::get( 'productBrandNike', 'ProductController@productBrandNike' );
 
-Route::product( 'productBrandNorthFace', 'ProductController@productBrandNorthFace' );
+Route::get( 'productBrandNorthFace', 'ProductController@productBrandNorthFace' );
 
