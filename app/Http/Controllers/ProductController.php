@@ -85,9 +85,18 @@ class ProductController extends Controller
 
         return view('products.productBrandNorthFace', compact('products'));
     }
+
     /**
      * Display a list of products on sale.
      */
+    public function productSales()
+    {
+        $products = DB::table('products')->where('sale', '=', 'true')->get()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.productSales', compact('products'));
+    }
 
     
  
