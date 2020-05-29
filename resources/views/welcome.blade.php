@@ -17,7 +17,7 @@
     <body>
       <!-- Main Nav Bar -->
         <nav class="navbar navbar-expand-lg bg-dark text-white">
-            <a class="navbar-brand text-light" href="#">E-Store</a>
+            <a class="navbar-brand text-light" href="./">E-Store</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,7 +33,7 @@
                     </div>
                   </li>
                 <li class="nav-item px-2 text-white">
-                  <a class="nav-link text-light" href="#"><i class="fas fa-gift"></i></a>
+                  <a class="nav-link text-light" href="{{ route( 'products.productFavorites') }}"><i class="fas fa-gift"></i></a>
                 </li>
                 <li class="nav-item px-2 text-white">
                   <a class="nav-link text-light" href="#"><i class="fas fa-shopping-cart"></i></a>
@@ -54,7 +54,7 @@
                   New
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Newest Jackets</a>
+                  <a class="dropdown-item" href="{{ route( 'products.newProducts') }}">Newest Jackets</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -62,7 +62,7 @@
                   Clothing
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Jackets</a>
+                  <a class="dropdown-item" href="{{ route( 'products.index') }}">Jackets</a>
                 </div>
               </li>
             <li class="nav-item dropdown">
@@ -70,10 +70,10 @@
                 Brands
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Arcteryx</a>
-                <a class="dropdown-item" href="#">Eddie Bauer</a>
-                <a class="dropdown-item" href="#">Nike</a>
-                <a class="dropdown-item" href="#">North Face</a>
+                <a class="dropdown-item" href="{{ route( 'products.productBrandArcteryx') }}">Arcteryx</a>
+                <a class="dropdown-item" href="{{ route( 'products.productBrandEddieBauer') }}">Eddie Bauer</a>
+                <a class="dropdown-item" href="{{ route( 'products.productBrandNike') }}">Nike</a>
+                <a class="dropdown-item" href="{{ route( 'products.productBrandNorthFace') }}">North Face</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -81,7 +81,7 @@
                   Sales
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Current Jacket Sales</a>
+                  <a class="dropdown-item" href="{{ route( 'products.productSales') }}">Current Jacket Sales</a>
                 </div>
               </li>
           </ul>
