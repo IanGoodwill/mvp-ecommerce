@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()
-        ->orderBy('posts.id', 'desc')
+        $products = Product::query()
+        ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 
         return view('products.index', compact('products'));
@@ -39,7 +39,7 @@ class ProductController extends Controller
      */
     public function newProducts()
     {
-        $products = Product::get()
+        $products = Product::query()
         ->orderBy('products.created_at', 'desc')
         ->simplePaginate(10);
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
      */
     public function productBrandArcteryx()
     {
-        $products = DB::table('products')->where('brand', '=', 'Arcteryx')->get()
+        $products = Product::query()->where('brand', '=', 'Arcteryx')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 
@@ -61,7 +61,7 @@ class ProductController extends Controller
 
     public function productBrandEddieBauer()
     {
-        $products = DB::table('products')->where('brand', '=', 'Eddie Bauer')->get()
+        $products = Product::query()->where('brand', '=', 'Eddie Bauer')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 
@@ -70,7 +70,7 @@ class ProductController extends Controller
 
     public function productBrandNike()
     {
-        $products = DB::table('products')->where('brand', '=', 'Nike')->get()
+        $products = Product::query()->where('brand', '=', 'Nike')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 
@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     public function productBrandNorthFace()
     {
-        $products = DB::table('products')->where('brand', '=', 'North Face')->get()
+        $products = Product::query()->where('brand', '=', 'North Face')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 
@@ -91,7 +91,7 @@ class ProductController extends Controller
      */
     public function productSales()
     {
-        $products = DB::table('products')->where('sale', '=', 'true')->get()
+        $products = Product::query()->where('sale', '=', 'true')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 
@@ -103,7 +103,7 @@ class ProductController extends Controller
      */
     public function productFavorites()
     {
-        $products = DB::table('products')->where('favorite', '=', 'true')->get()
+        $products = Product::query()->where('favorite', '=', 'true')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(10);
 

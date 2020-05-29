@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->boolean('sale')->default( false );
             $table->boolean('favorite')->default( false );
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
