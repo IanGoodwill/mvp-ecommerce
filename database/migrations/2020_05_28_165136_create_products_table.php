@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->unsignedInteger('units')->default(0);
             $table->decimal('price');
+            $table->boolean('sale')->default( false );
             $table->timestamps();
         });
     }
