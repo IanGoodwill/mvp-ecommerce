@@ -8,6 +8,7 @@
         <meta name=”robots” content="index, follow">
         <link rel="shortcut icon" type="image/png" href="{{URL('/product-images/shop-favicon.png')}}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="{{ asset('js/app.js') }}" type ="text/javascript" defer ></script>
         <!-- Fonts -->
         <script src="https://kit.fontawesome.com/901edefaa6.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -22,13 +23,13 @@
             </button>
             <div class="collapse navbar-collapse text-light bg-dark" id="navbarNavDropdown">
               <ul class="navbar-nav d-flex text-light bg-dark ml-auto">
-                <li class="nav-item dropdown text-white px-2">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item active dropdown text-white px-2">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" >
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Sign In</a>
-                      <a class="dropdown-item" href="#">Join Up</a>
+                      <a class="dropdown-item" href="{{ route( 'login') }}">Sign In</a>
+                      <a class="dropdown-item" href="{{ route( 'register') }}">Join Up</a>
                     </div>
                   </li>
                 <li class="nav-item px-2 text-white">
