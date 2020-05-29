@@ -33,3 +33,5 @@ Route::get( 'productBrandNike', 'ProductController@productBrandNike' );
 
 Route::get( 'productBrandNorthFace', 'ProductController@productBrandNorthFace' );
 
+Route::get( 'productSales', 'ProductController@productSales' );
+
