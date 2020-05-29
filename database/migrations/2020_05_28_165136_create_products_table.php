@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('units')->default(0);
             $table->decimal('price');
             $table->boolean('sale')->default( false );
+            $table->boolean('favorite')->default( false );
             $table->timestamps();
         });
     }
