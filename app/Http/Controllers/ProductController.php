@@ -98,6 +98,18 @@ class ProductController extends Controller
         return view('products.productSales', compact('products'));
     }
 
+      /**
+     * Display a list of products that have been favorited.
+     */
+    public function productFavorites()
+    {
+        $products = DB::table('products')->where('favorite', '=', 'true')->get()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.productFavorites', compact('products'));
+    }
+
     
  
 }

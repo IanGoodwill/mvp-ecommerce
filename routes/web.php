@@ -35,3 +35,5 @@ Route::get( 'productBrandNorthFace', 'ProductController@productBrandNorthFace' )
 
 Route::get( 'productSales', 'ProductController@productSales' );
 
+Route::get( 'productFavorites', 'ProductController@productFavorites' );
+
