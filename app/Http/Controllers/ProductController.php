@@ -8,78 +8,87 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all the products.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $products = Product::all()
+        ->orderBy('posts.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.index', compact('products'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * Display the specified product.
      *
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view( 'products.show', compact('product') );
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
+     * Display a list of newest products.
      */
-    public function edit(Product $product)
+    public function newProducts()
     {
-        //
+        $products = Product::get()
+        ->orderBy('products.created_at', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.newProducts', compact('products'));
     }
 
+    
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
+     * Display a list of products by brand.
      */
-    public function update(Request $request, Product $product)
+    public function productBrandArcteryx()
     {
-        //
+        $products = DB::table('products')->where('brand', '=', 'Arcteryx')->get()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.productBrandArcteryx', compact('products'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
+    public function productBrandEddieBauer()
     {
-        //
+        $products = DB::table('products')->where('brand', '=', 'Eddie Bauer')->get()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.productBrandEddieBauer', compact('products'));
     }
+
+    public function productBrandNike()
+    {
+        $products = DB::table('products')->where('brand', '=', 'Nike')->get()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.productBrandNike', compact('products'));
+    }
+
+    public function productBrandNorthFace()
+    {
+        $products = DB::table('products')->where('brand', '=', 'North Face')->get()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(10);
+
+        return view('products.productBrandNorthFace', compact('products'));
+    }
+    /**
+     * Display a list of products on sale.
+     */
+
+    
+ 
 }

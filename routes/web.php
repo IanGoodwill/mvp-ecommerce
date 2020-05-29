@@ -20,3 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource( 'products', 'ProductController' );
+
+Route::product( 'newProducts', 'ProductController@newProducts' );
+
+Route::product( 'productBrandArcteryx', 'ProductController@productBrandArcteryx' );
+
+Route::product( 'productBrandEddieBauer', 'ProductController@productBrandEddieBauer' );
+
+Route::product( 'productBrandNike', 'ProductController@productBrandNike' );
+
+Route::product( 'productBrandNorthFace', 'ProductController@productBrandNorthFace' );
+
