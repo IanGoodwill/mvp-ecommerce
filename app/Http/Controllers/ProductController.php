@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $products = Product::query()
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.index', compact('products'));
     }
@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $products = Product::query()
         ->orderBy('products.created_at', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.newProducts', compact('products'));
     }
@@ -54,7 +54,7 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('brand', '=', 'Arcteryx')
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.productBrandArcteryx', compact('products'));
     }
@@ -63,7 +63,7 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('brand', '=', 'Eddie Bauer')
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.productBrandEddieBauer', compact('products'));
     }
@@ -72,7 +72,7 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('brand', '=', 'Nike')
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.productBrandNike', compact('products'));
     }
@@ -81,7 +81,7 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('brand', '=', 'North Face')
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.productBrandNorthFace', compact('products'));
     }
@@ -93,7 +93,7 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('sale', '=', 'true')
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.productSales', compact('products'));
     }
@@ -105,7 +105,7 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('favorite', '=', 'true')
         ->orderBy('products.id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(9);
 
         return view('products.productFavorites', compact('products'));
     }
