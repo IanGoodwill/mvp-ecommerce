@@ -12,7 +12,7 @@ All Products
         <div class="card-body">
             <a data-product-id="{{ $product->id }}" class="nav-link" href="{{ route('products.show', $product->id ) }}">
                 <figure>
-                    <img class="img-responsive card-img-top" alt="product image"  src="product-images/{{$product->image}}">
+                    <img class="img-fluid card-img-top" alt="product image" style="max-height: 400px;" src="product-images/{{$product->image}}">
                 </figure>
             </a>
             <h4 class="text-dark">

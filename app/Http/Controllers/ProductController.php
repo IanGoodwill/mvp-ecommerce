@@ -110,6 +110,11 @@ class ProductController extends Controller
         return view('products.productFavorites', compact('products'));
     }
 
-    
- 
+    public function sizingForm()
+    {
+        $products = Product::query()
+        ->get();
+
+    }
+
 }

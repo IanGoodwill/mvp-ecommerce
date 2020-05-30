@@ -26,9 +26,12 @@ Individual Product
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
-                 
-                  <p class="card-text">  <strong>Price: ${{ $product->price }}</strong>   </p>
+                  <p class="card-text">  <strong>Price: ${{ $product->price }}</strong></p>
                   
+                  <div id="app">
+                    <sizing-form> </sizing-form>
+                  </div>
+
                 </div>
               </div>
             </div>

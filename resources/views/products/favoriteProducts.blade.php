@@ -7,6 +7,8 @@ Favorites
 @section('content')
 
 @section('content')
+@if($product->is_favorite !== true) 
+
 <div class="card-columns">
 @foreach($products as $product)
    
@@ -34,6 +36,7 @@ Favorites
 @endforeach
 </div>
   {{ $products->links() }}
+  @endif
 @endsection 
 
 @endsection
