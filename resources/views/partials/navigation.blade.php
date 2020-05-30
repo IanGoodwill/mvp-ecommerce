@@ -16,10 +16,10 @@
             </div>
           </li>
         <li class="nav-item px-2 text-white">
-          <a class="nav-link text-light" href="{{ route( 'products.productFavorites') }}"><i class="fas fa-gift"></i></a>
+          <a class="nav-link text-light" href="#"><i class="fas fa-gift"></i></a>
         </li>
         <li class="nav-item px-2 text-white">
-          <a class="nav-link text-light" href="#"><i class="fas fa-shopping-cart"></i></a>
+          <a class="nav-link text-light" href="{{ route( 'products.productFavorites') }}"><i class="fas fa-shopping-cart"></i></a>
         </li>
       </ul>
     </div>

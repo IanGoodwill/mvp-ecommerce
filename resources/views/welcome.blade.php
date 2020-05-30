@@ -99,7 +99,7 @@
         <figure>
             <img class="img-responsive img-fluid w-80 rounded mx-auto d-block"  alt="Photo of a Jacket" src="{{URL('/product-images/Norvan-SL-Insulated-Hoody-Black-Infrared.png')}}">
         </figure>
-        <a  href="#">
+        <a  href="{{ route( 'products.index') }}">
             <button type="button" class="btn btn-secondary text-center mb-2">Shop Now</button>
             </a>
       </div>
