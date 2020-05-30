@@ -111,7 +111,7 @@
        </div>
         <!-- Footer -->
        <footer class="text-center">
-        <p>E-Store &copy; Copyright 2020</p>
-    </footer>
+          <p>E-Store &copy; Copyright 2020</p>
+       </footer>
     </body>
 </html>

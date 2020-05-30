@@ -91,7 +91,7 @@ class ProductController extends Controller
      */
     public function productSales()
     {
-        $products = Product::query()->where('sale', '=', 'true')
+        $products = Product::query()->where('is_sale', '=', 'true')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(9);
 
@@ -103,7 +103,7 @@ class ProductController extends Controller
      */
     public function productFavorites()
     {
-        $products = Product::query()->where('favorite', '=', 'true')
+        $products = Product::query()->where('is_favorite', '=', 'true')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(9);
 

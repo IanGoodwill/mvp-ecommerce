@@ -24,7 +24,9 @@
         @yield('js')
 
         @yield('content')
-      
+        <footer class="text-center">
+            <p>E-Store &copy; Copyright 2020</p>
+         </footer>
     </body>
 
 </html>
