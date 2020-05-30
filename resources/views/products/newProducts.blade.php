@@ -5,14 +5,14 @@ Newest Products
 @endsection
 
 @section('content')
-
+<div class="card-columns">
 @foreach($products as $product)
-<div class="col-md-3">
+   
     <div class="card">
         <div class="card-body">
             <a data-product-id="{{ $product->id }}" class="nav-link" href="{{ route('products.show', $product->id ) }}">
                 <figure>
-                    <img class="img-responsive card-img-top" alt="product image"  src="product-images/{{$product->image}}">
+                    <img class="img-responsive card-img-top mt-5 mb-5" alt="product image"  src="product-images/{{$product->image}}">
                 </figure>
             </a>
             <h4 class="text-dark">
@@ -29,8 +29,7 @@ Newest Products
             </a>
         </div>
     </div>
-</div>
 @endforeach
+</div>
   {{ $products->links() }}
-
-@endsection
+@endsection 

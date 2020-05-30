@@ -5,9 +5,9 @@ All Products
 @endsection
 
 @section('content')
-
+<div class="card-columns">
 @foreach($products as $product)
-<div class="col-md-3">
+   
     <div class="card">
         <div class="card-body">
             <a data-product-id="{{ $product->id }}" class="nav-link" href="{{ route('products.show', $product->id ) }}">
@@ -29,7 +29,7 @@ All Products
             </a>
         </div>
     </div>
-</div>
 @endforeach
+</div>
   {{ $products->links() }}
 @endsection 
