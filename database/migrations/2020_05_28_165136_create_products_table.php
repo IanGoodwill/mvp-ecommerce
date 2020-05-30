@@ -19,10 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->string('brand');
             $table->string('image');
-            $table->unsignedInteger('units')->default(0);
             $table->decimal('price');
-            $table->boolean('sale')->default( false );
-            $table->boolean('favorite')->default( false );
+            $table->unsignedInteger('small_units')->default(15);
+            $table->unsignedInteger('medium_units')->default(9);
+            $table->unsignedInteger('large_units')->default(25);
+            $table->boolean('is_sale')->default( false );
+            $table->boolean('is_favorite')->default( false );
             $table->timestamps();
         });
     }
