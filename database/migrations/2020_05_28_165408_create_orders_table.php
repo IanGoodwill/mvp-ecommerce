@@ -18,7 +18,9 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('quantity')->default(1);
-            $table->string('size')->nullable();
+            $table->boolean('is_small')->default( false );
+            $table->boolean('is_medium')->default( false );
+            $table->boolean('is_large')->default( false );
             $table->string('address')->nullable();
             $table->boolean('is_delivered')->default(false);
             $table->timestamps();
