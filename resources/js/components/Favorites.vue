@@ -1,9 +1,9 @@
 <template>
   <div>
-    <a href="#" v-if="isFavorited" @click.prevent="unFavorite(product)">
+    <a class=" d-inline" href="#" v-if="isFavorited" @click.prevent="unFavorite(product)">
       <i class="fas fa-gift d-inline float-right isFav" aria-hidden="true"></i>
       </a>
-    <a href="#" v-else @click.prevent="favorite(product)">
+    <a class=" d-inline" href="#" v-else @click.prevent="favorite(product)">
       <i class="fas fa-gift d-inline float-right notFav" aria-hidden="false"></i>
     </a>
   </div>
@@ -29,12 +29,12 @@ export default {
   methods: {
     favorite(product) {
       axios
-        .post("/mvp-ecommerce/public/favorite" + product)
+        .post("/mvp-ecommerce/public/favorite/" + product)
         .then(response => (this.isFavorited = true))
     },
     unFavorite(product) {
       axios
-        .post("/mvp-ecommerce/public/unFavorite" + product)
+        .post("/mvp-ecommerce/public/unFavorite/" + product)
         .then(response => (this.isFavorited = false))
     }
   }
@@ -44,11 +44,11 @@ export default {
 <style scoped>
 .isFav {
     color: blue;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 .notFav  {
     color: black;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 </style>
 

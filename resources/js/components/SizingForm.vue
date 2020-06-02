@@ -7,9 +7,9 @@
     <label for="sizing-form"><strong>Sizes:</strong></label>
         <select class="form-control">
             <option >Please choose a size...</option>
-            <option name="small_units" :value="smallUnits">Small </option> <!-- needs equivellent of {{ $product->small_units }} -->
-            <option name="medium_units" :value="mediumUnits">Medium</option>
-            <option name="large_units" :value="largeUnits">Large</option>
+            <option name="small_units" :value="smallUnits">Small   {{ product.small_units }} units left available. </option>
+            <option name="medium_units" :value="mediumUnits">Medium   {{ product.medium_units }} units left available. </option>
+            <option name="large_units" :value="largeUnits">Large   {{ product.large_units }} units left available. </option>
         </select>
   </div>
 </form>
@@ -27,19 +27,21 @@
     export default {
          name: "sizing-form",
          props: [
+             "productId"
                ],
          data() {
             return {
               smallUnits: '',
               mediumUnits: '',
               largeUnits: '',
+              product: {}
             };
         },
         methods: {
             read() {
-                axios.get('/mvp-ecommerce/public/products/{id}').then(({ data }) => {  
-                    this.product = data;
-
+                axios.get('/mvp-ecommerce/public/api/products/' + this.productId).then(( response ) => {  
+                    this.product = response.data.product;
+                     console.log( this.product);
                 })
                     .catch((err) => console.error(err));
             },

@@ -28,6 +28,7 @@ All Products
                 </p>
                 <favorites :product={{ $product->id }} :favorited={{ $product->favorited() ? 'true' : 'false' }}>
                 </favorites>
+                <br>
             </div>            
         </div>
 

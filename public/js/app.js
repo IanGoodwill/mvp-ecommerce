@@ -1939,14 +1939,14 @@ __webpack_require__.r(__webpack_exports__);
     favorite: function favorite(product) {
       var _this = this;
 
-      axios.post("/mvp-ecommerce/public/favorite" + product).then(function (response) {
+      axios.post("/mvp-ecommerce/public/favorite/" + product).then(function (response) {
         return _this.isFavorited = true;
       });
     },
     unFavorite: function unFavorite(product) {
       var _this2 = this;
 
-      axios.post("/mvp-ecommerce/public/unFavorite" + product).then(function (response) {
+      axios.post("/mvp-ecommerce/public/unFavorite/" + product).then(function (response) {
         return _this2.isFavorited = false;
       });
     }
@@ -1991,21 +1991,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sizing-form",
-  props: [],
+  props: ["productId"],
   data: function data() {
     return {
       smallUnits: '',
       mediumUnits: '',
-      largeUnits: ''
+      largeUnits: '',
+      product: {}
     };
   },
   methods: {
     read: function read() {
       var _this = this;
 
-      axios.get('/mvp-ecommerce/public/products/{id}').then(function (_ref) {
-        var data = _ref.data;
-        _this.product = data;
+      axios.get('/mvp-ecommerce/public/api/products/' + this.productId).then(function (response) {
+        _this.product = response.data.product;
+        console.log(_this.product);
       })["catch"](function (err) {
         return console.error(err);
       });
@@ -6460,7 +6461,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.isFav[data-v-0b01de08] {\r\n    color: blue;\r\n    font-size: 1.5rem;\n}\n.notFav[data-v-0b01de08]  {\r\n    color: black;\r\n    font-size: 1.5rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.isFav[data-v-0b01de08] {\r\n    color: blue;\r\n    font-size: 1.8rem;\n}\n.notFav[data-v-0b01de08]  {\r\n    color: black;\r\n    font-size: 1.8rem;\n}\r\n", ""]);
 
 // exports
 
@@ -38260,6 +38261,7 @@ var render = function() {
       ? _c(
           "a",
           {
+            staticClass: " d-inline",
             attrs: { href: "#" },
             on: {
               click: function($event) {
@@ -38278,6 +38280,7 @@ var render = function() {
       : _c(
           "a",
           {
+            staticClass: " d-inline",
             attrs: { href: "#" },
             on: {
               click: function($event) {
@@ -38336,7 +38339,13 @@ var render = function() {
                 attrs: { name: "small_units" },
                 domProps: { value: _vm.smallUnits }
               },
-              [_vm._v("Small ")]
+              [
+                _vm._v(
+                  "Small   " +
+                    _vm._s(_vm.product.small_units) +
+                    " units left available. "
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -38345,7 +38354,13 @@ var render = function() {
                 attrs: { name: "medium_units" },
                 domProps: { value: _vm.mediumUnits }
               },
-              [_vm._v("Medium")]
+              [
+                _vm._v(
+                  "Medium   " +
+                    _vm._s(_vm.product.medium_units) +
+                    " units left available. "
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -38354,7 +38369,13 @@ var render = function() {
                 attrs: { name: "large_units" },
                 domProps: { value: _vm.largeUnits }
               },
-              [_vm._v("Large")]
+              [
+                _vm._v(
+                  "Large   " +
+                    _vm._s(_vm.product.large_units) +
+                    " units left available. "
+                )
+              ]
             )
           ])
         ])

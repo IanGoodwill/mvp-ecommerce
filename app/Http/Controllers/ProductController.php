@@ -37,6 +37,15 @@ class ProductController extends Controller
         return view( 'products.show', compact('product') );
     }
 
+    public function single($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $user = Auth::user(); 
+
+        return compact('product');
+    }
+
     /**
      * Display a list of newest products.
      */
@@ -49,7 +58,6 @@ class ProductController extends Controller
         return view('products.newProducts', compact('products'));
     }
 
-    
     /**
      * Display a list of products by brand.
      */
@@ -115,16 +123,19 @@ class ProductController extends Controller
 
     public function favorite( Product $product )
     {
-        Auth::user()->favorites()->attach($product->id);
+        if ( $user = Auth::user() )
+        $user->favorites()->attach($product->id); 
 
-        return back();
+    
+        return "success"; 
     }
   
     public function unFavorite( Product $product )
     {
-        Auth::user()->favorites()->detach($product->id);
+        if ( $user = Auth::user() )
+        $user->favorites()->detach($product->id); 
 
-        return back();
+        return "success"; 
     }
 
     public function sizingForm()
