@@ -1932,6 +1932,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sizing-form",
   props: [],
@@ -1946,9 +1947,8 @@ __webpack_require__.r(__webpack_exports__);
     read: function read() {
       var _this = this;
 
-      axios.get('/api/products').then(function (_ref) {
+      axios.get('/mvp-ecommerce/public/products/{id}').then(function (_ref) {
         var data = _ref.data;
-        //console.log(data)
         _this.product = data;
       })["catch"](function (err) {
         return console.error(err);
@@ -38161,13 +38161,15 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("select", { staticClass: "form-control" }, [
+            _c("option", [_vm._v("Please choose a size...")]),
+            _vm._v(" "),
             _c(
               "option",
               {
                 attrs: { name: "small_units" },
                 domProps: { value: _vm.smallUnits }
               },
-              [_vm._v("Small " + _vm._s(_vm.product.small_units))]
+              [_vm._v("Small ")]
             ),
             _vm._v(" "),
             _c(

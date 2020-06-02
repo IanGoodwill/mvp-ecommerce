@@ -6,7 +6,8 @@
   <div class="form-group">
     <label for="sizing-form"><strong>Sizes:</strong></label>
         <select class="form-control">
-            <option name="small_units" :value="smallUnits">Small {{ product.small_units }}</option> <!-- needs equivellent of {{ $product->small_units }} -->
+            <option >Please choose a size...</option>
+            <option name="small_units" :value="smallUnits">Small </option> <!-- needs equivellent of {{ $product->small_units }} -->
             <option name="medium_units" :value="mediumUnits">Medium</option>
             <option name="large_units" :value="largeUnits">Large</option>
         </select>
@@ -36,8 +37,7 @@
         },
         methods: {
             read() {
-                axios.get('/api/products').then(({ data }) => {
-                    //console.log(data)
+                axios.get('/mvp-ecommerce/public/products/{id}').then(({ data }) => {  
                     this.product = data;
 
                 })

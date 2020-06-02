@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -30,6 +31,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+
+        $user = Auth::user(); 
 
         return view( 'products.show', compact('product') );
     }
