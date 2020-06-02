@@ -6,6 +6,7 @@ All Products
 
 @section('content')
 <div class="row justify-content-md-center">
+    <div id="app">
     <div class="card-columns">
     @foreach($products as $product)
    
@@ -25,13 +26,13 @@ All Products
                 <p class="text-dark d-inline">
                     <strong>${{ $product->price }}</strong>    
                 </p>
-                <a class="text-dark float-right d-inline" href="{{ route( 'products.productFavorites') }}">
-                    <i class="fas fa-gift d-inline"></i>
-                </a>
+                <favorites :product={{ $product->id }} :favorited={{ $product->favorited() ? 'true' : 'false' }}>
+                </favorites>
             </div>            
         </div>
 
     @endforeach
+</div>
     </div>
   {{ $products->links() }}
 </div>

@@ -37,3 +37,7 @@ Route::get( 'productSales', 'ProductController@productSales' )->name('products.p
 
 Route::get( 'productFavorites', 'ProductController@productFavorites' )->name('products.productFavorites');
 
+Route::post('/favorite/{product}', 'ProductController@favorite');
+
+Route::post('/unfavorite/{product}', 'ProductController@unFavorite');
+

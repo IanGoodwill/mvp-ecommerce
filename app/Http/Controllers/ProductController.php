@@ -94,7 +94,7 @@ class ProductController extends Controller
      */
     public function productSales()
     {
-        $products = Product::query()->where('is_sale', '=', 'true')
+        $products = Product::query()->where('is_sale', '=', '1')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(9);
 
@@ -106,11 +106,25 @@ class ProductController extends Controller
      */
     public function productFavorites()
     {
-        $products = Product::query()->where('is_favorite', '=', 'true')
+        $products = Product::query()->where('is_favorite', '=', '1')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(9);
 
         return view('products.productFavorites', compact('products'));
+    }
+
+    public function favorite( Product $product )
+    {
+        Auth::user()->favorites()->attach($product->id);
+
+        return back();
+    }
+  
+    public function unFavorite( Product $product )
+    {
+        Auth::user()->favorites()->detach($product->id);
+
+        return back();
     }
 
     public function sizingForm()
