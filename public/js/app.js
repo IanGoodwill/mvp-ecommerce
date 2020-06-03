@@ -1928,7 +1928,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.isFavorited = this.isFavorited ? true : false;
+    this.favorited = this.favorited ? true : false;
   },
   computed: {
     isFavorite: function isFavorite() {
@@ -1964,10 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -38390,9 +38386,7 @@ var render = function() {
         attrs: { type: "button" }
       },
       [_vm._v("Add to cart")]
-    ),
-    _vm._v(" "),
-    _vm._m(1)
+    )
   ])
 }
 var staticRenderFns = [
@@ -38403,19 +38397,6 @@ var staticRenderFns = [
     return _c("label", { attrs: { for: "sizing-form" } }, [
       _c("strong", [_vm._v("Sizes:")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link text-dark float-right favorite-link",
-        attrs: { href: "#" }
-      },
-      [_c("i", { staticClass: "fas fa-gift" })]
-    )
   }
 ]
 render._withStripped = true

@@ -25,8 +25,7 @@
 
         public function favorited()
         {
-          return (bool) Favorite::where('user_id', Auth::id())
-            ->where('product_id', $this->id)
+          return (bool) Favorite::where('product_id', $this->id)
             ->first();
         }
       

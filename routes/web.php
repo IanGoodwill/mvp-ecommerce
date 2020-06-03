@@ -41,3 +41,11 @@ Route::post('/favorite/{product}', 'ProductController@favorite');
 
 Route::post('/unfavorite/{product}', 'ProductController@unFavorite');
 
+Route::get( 'cart', 'ProductController@showCart' )->name('shoppingCarts.cart');
+
+Route::get('addToCart/{id}', 'ProductsController@addToCart');
+
+Route::patch('update-cart', 'ProductsController@updateCart');
+
+Route::delete('remove-from-cart', 'ProductsController@remove');
+

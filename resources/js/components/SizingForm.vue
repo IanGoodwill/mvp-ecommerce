@@ -16,10 +16,6 @@
 
 <button type="button" class="btn btn-success text-center mb-2">Add to cart</button>
 
-<a class="nav-link text-dark float-right favorite-link" href="#">
-    <i class="fas fa-gift"></i>
-</a>
-
 </div>
 </template>
 

@@ -19,7 +19,7 @@ export default {
     };
   },
   mounted() {
-    this.isFavorited = this.isFavorited ? true : false;
+    this.favorited = this.favorited ? true : false;
   },
   computed: {
     isFavorite() {
