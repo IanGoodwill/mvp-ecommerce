@@ -128,7 +128,8 @@ class ProductController extends Controller
     {
         if ( $user = Auth::user() )
         $user->favorites()->attach($product->id); // this needs to update is_followed in products database
-
+        
+       
         return "success"; 
     }
   
@@ -161,6 +162,13 @@ class ProductController extends Controller
         return view('shoppingCarts.cart');
     }
 
+    /**
+     * View Checkout.
+     */
+    public function showCheckout()
+    {
+        return view('shoppingCarts.checkout');
+    }
 
     /**
      * Add a product to the cart.

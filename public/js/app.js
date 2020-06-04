@@ -1928,11 +1928,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.favorited = this.favorited ? true : false;
+    this.isFavorited = this.favorited ? true : false;
   },
   computed: {
     isFavorite: function isFavorite() {
-      return this.favorited;
+      return this.isFavorited;
     }
   },
   methods: {
@@ -1985,6 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sizing-form",
   props: ["productId"],
@@ -2006,7 +2007,8 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.error(err);
       });
-    }
+    },
+    addToCart: function addToCart() {}
   },
   mounted: function mounted() {
     this.read();
@@ -38319,7 +38321,10 @@ var render = function() {
   return _c("div", [
     _c(
       "form",
-      { attrs: { method: "POST" } },
+      {
+        attrs: { method: "POST", enctype: "multipart/form-data" },
+        on: { submit: _vm.addToCart }
+      },
       [
         _vm._t("default"),
         _vm._v(" "),
@@ -38373,19 +38378,19 @@ var render = function() {
                 )
               ]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success text-center mb-2 mt-2",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("Add to cart")]
+          )
         ])
       ],
       2
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-success text-center mb-2",
-        attrs: { type: "button" }
-      },
-      [_vm._v("Add to cart")]
     )
   ])
 }

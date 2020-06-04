@@ -44,7 +44,7 @@
             <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
             <td class="actions" data-th="">
                 <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                        <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
+                <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
             </td>
         </tr>
         @endforeach
@@ -58,6 +58,7 @@
             <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total {{ $total }}</strong></td>
+            <td><a href="{{ route( 'shoppingCarts.checkout') }}" class="btn btn-success float-right"><i class="fa fa-angle-right"></i> Continue to Checkout</a></td>
         </tr>
         </tfoot>
     </table>

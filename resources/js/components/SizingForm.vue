@@ -1,7 +1,7 @@
 <template>
 <div>
 
-<form method="POST">
+<form method="POST" @submit="addToCart" enctype="multipart/form-data">
     <slot></slot>
   <div class="form-group">
     <label for="sizing-form"><strong>Sizes:</strong></label>
@@ -11,10 +11,11 @@
             <option name="medium_units" :value="mediumUnits">Medium   {{ product.medium_units }} units left available. </option>
             <option name="large_units" :value="largeUnits">Large   {{ product.large_units }} units left available. </option>
         </select>
+    <button type="submit" class="btn btn-success text-center mb-2 mt-2">Add to cart</button>
   </div>
 </form>
 
-<button type="button" class="btn btn-success text-center mb-2">Add to cart</button>
+
 
 </div>
 </template>
@@ -41,6 +42,10 @@
                 })
                     .catch((err) => console.error(err));
             },
+
+            addToCart()  {
+
+            }
         },
         mounted() {
             this.read();

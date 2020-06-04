@@ -19,11 +19,11 @@ export default {
     };
   },
   mounted() {
-    this.favorited = this.favorited ? true : false;
+    this.isFavorited = this.favorited ? true : false;
   },
   computed: {
     isFavorite() {
-      return this.favorited;
+      return this.isFavorited;
     }
   },
   methods: {

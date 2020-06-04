@@ -39,9 +39,11 @@ Route::get( 'productFavorites', 'ProductController@productFavorites' )->name('pr
 
 Route::post('/favorite/{product}', 'ProductController@favorite');
 
-Route::post('/unfavorite/{product}', 'ProductController@unFavorite');
+Route::post('/unFavorite/{product}', 'ProductController@unFavorite');
 
 Route::get( 'cart', 'ProductController@showCart' )->name('shoppingCarts.cart');
+
+Route::get( 'checkout', 'ProductController@showCheckout' )->name('shoppingCarts.checkout');
 
 Route::get('addToCart/{id}', 'ProductsController@addToCart');
 

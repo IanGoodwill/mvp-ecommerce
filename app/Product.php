@@ -10,7 +10,7 @@
         use SoftDeletes;
 
         protected $fillable = [
-            'name', 'description', 'brand', 'image', 'small_units', 'medium_units', 'large_units', 'price'
+            'name', 'description', 'brand', 'image', 'small_units', 'medium_units', 'large_units', 'price', 'is_favorite'
         ];
 
         public function orders()
@@ -18,14 +18,9 @@
             return $this->hasMany(Order::class);
         }
 
-        public function favorites()
-        {
-            return $this->hasMany(Favorite::class, 'product_id');
-        }
-
         public function favorited()
         {
-          return (bool) Favorite::where('product_id', $this->id)
+           return (bool) Favorite::where('product_id', $this->id) // need to check
             ->first();
         }
       
