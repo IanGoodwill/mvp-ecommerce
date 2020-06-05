@@ -171,6 +171,14 @@ class ProductController extends Controller
     }
 
     /**
+     * View Checkout.
+     */
+    public function showConfirmation()
+    {
+        return view('shoppingCarts.confirmation');
+    }
+
+    /**
      * Add a product to the cart.
      */
     public function addToCart($id)

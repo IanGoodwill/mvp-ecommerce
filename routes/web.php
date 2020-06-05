@@ -45,9 +45,11 @@ Route::get( 'cart', 'ProductController@showCart' )->name('shoppingCarts.cart');
 
 Route::get( 'checkout', 'ProductController@showCheckout' )->name('shoppingCarts.checkout');
 
-Route::get('addToCart/{id}', 'ProductsController@addToCart');
+Route::get( 'confirmation', 'ProductController@showConfirmation' )->name('shoppingCarts.confirmation');
 
-Route::patch('update-cart', 'ProductsController@updateCart');
+Route::get('addToCart/{id}', 'ProductController@addToCart');
 
-Route::delete('remove-from-cart', 'ProductsController@remove');
+Route::patch('update-cart', 'ProductController@updateCart');
+
+Route::delete('remove-from-cart', 'ProductController@remove');
 

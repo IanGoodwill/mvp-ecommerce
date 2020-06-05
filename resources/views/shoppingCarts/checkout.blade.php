@@ -90,7 +90,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4">
-                                <button type="submit" class="subscribe btn btn-success btn-lg btn-block">Place Order</button>
+                                <a href="{{ route( 'shoppingCarts.confirmation') }}">
+                                    <button class="btn btn-success btn-lg btn-block">Place Order</button>
+                                </a>
                             <div class="col-md-12 mt-4">
                                 <a href="{{ route( 'shoppingCarts.cart') }}" class="btn btn-lg btn-block btn-warning"><i class="fa fa-angle-left"></i> Return to Cart</a>
                             </div>

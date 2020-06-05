@@ -34,7 +34,7 @@ Individual Product
             <sizing-form product-id="{{ $product->id }}"> </sizing-form>
              
             <favorites :product={{ $product->id }} :isFavorited={{ $product->favorited() ? 'true' : 'false' }}>
-            </favorites>
+            </favorites> 
 
           </div>
         </div>
