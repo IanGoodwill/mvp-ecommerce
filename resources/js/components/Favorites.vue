@@ -24,7 +24,7 @@ export default {
   computed: {
     isFavorite() {
       return this.isFavorited;
-    }
+    } 
   },
   methods: {
     favorite(product) {

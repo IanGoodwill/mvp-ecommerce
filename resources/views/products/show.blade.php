@@ -31,7 +31,9 @@ Individual Product
           <div class="card-body">
             <p class="card-text">  <strong>Price: ${{ $product->price }}</strong></p>
           
-            <sizing-form product-id="{{ $product->id }}"> </sizing-form>
+            <sizing-form product-id="{{ $product->id }}"> 
+               @csrf  @method('PATCH')
+            </sizing-form>
              
             <favorites :product={{ $product->id }} :isFavorited={{ $product->favorited() ? 'true' : 'false' }}>
             </favorites> 

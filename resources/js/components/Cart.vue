@@ -1,5 +1,5 @@
 <template>
-
+  <!-- Needs a for each session loop -->
 <div>
 <table id="cart" class="table table-hover table-condensed">
         <thead>
@@ -13,6 +13,9 @@
         </tr>
         </thead>
         <tbody>
+
+       <div v-for="cart in carts" :key="product.id">
+
         <tr>
             <td data-th="Product">
                 <div class="row">
@@ -36,6 +39,8 @@
                 <button class="btn btn-danger btn-sm remove-from-cart" ><i class="fa fa-trash-o"></i></button>
             </td>
         </tr>
+
+        </div>
 
         </tbody>
         <tfoot>

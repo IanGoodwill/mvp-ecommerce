@@ -181,9 +181,11 @@ class ProductController extends Controller
     /**
      * Add a product to the cart.
      */
-    public function addToCart($id)
+    public function addToCart( Request $request )
     {
-        $product = Product::find($id);
+        //dd($request->product_id);
+
+        $product = Product::find($request->product_id);
  
         if(!$product) {
  
@@ -192,13 +194,16 @@ class ProductController extends Controller
         }
  
         $cart = session()->get('cart');
- 
+
+        // return redirect()->back()->with('success', 'Product added to cart successfully!');
+        // return "session check"; 
+
         // if cart is empty then this the first product
         if(!$cart) {
  
             $cart = [
-                    $id => [
-                        "name" => $product->name,
+                    $request->product_id => [
+                        "name" => $product->name, // property name does not exist in this collection instance
                         "description" => $product->description,
                         "quantity" => 1,
                         "price" => $product->price,
@@ -208,14 +213,15 @@ class ProductController extends Controller
             ];
  
             session()->put('cart', $cart);
- 
+
             return redirect()->back()->with('success', 'Product added to cart successfully!');
+            // return "session started";
         }
  
         // if cart not empty then check if this product exist then increment quantity
-        if(isset($cart[$id])) {
+        if(isset($cart[$request->product_id])) {
  
-            $cart[$id]['quantity']++;
+            $cart[$request->product_id]['quantity']++;
  
             session()->put('cart', $cart);
  
@@ -224,7 +230,7 @@ class ProductController extends Controller
         }
  
         // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
+        $cart[$request->product_id] = [
             "name" => $product->name,
             "description" => $product->description,
             "quantity" => 1,
@@ -234,16 +240,16 @@ class ProductController extends Controller
  
         session()->put('cart', $cart);
 
-        $htmlCart = view('_header_cart')->render();
+        // $htmlCart = view('_header_cart')->render();
 
-        return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
+        // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
  
-        // return redirect()->back()->with('success', 'Product added to cart successfully!');
+         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     public function updateCart(Request $request)
     {
-        if($request->id and $request->quantity)
+        if($request->product_id and $request->quantity)
         {
             $cart = session()->get('cart');
 
@@ -255,7 +261,7 @@ class ProductController extends Controller
 
             $total = $this->getCartTotal();
 
-            $htmlCart = view('_header_cart')->render();
+           // $htmlCart = view('_header_cart')->render();
 
             return response()->json(['msg' => 'Cart updated successfully', 'data' => $htmlCart, 'total' => $total, 'subTotal' => $subTotal]);
 
@@ -269,16 +275,16 @@ class ProductController extends Controller
 
             $cart = session()->get('cart');
 
-            if(isset($cart[$request->id])) {
+            if(isset($cart[$request->product_id])) {
 
-                unset($cart[$request->id]);
+                unset($cart[$request->product_id]);
 
                 session()->put('cart', $cart);
             }
 
             $total = $this->getCartTotal();
 
-            $htmlCart = view('_header_cart')->render();
+           // $htmlCart = view('_header_cart')->render();
 
             return response()->json(['msg' => 'Product removed successfully', 'data' => $htmlCart, 'total' => $total]);
 

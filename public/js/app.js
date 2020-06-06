@@ -2062,11 +2062,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sizing-form",
-  props: ["productId"],
+  props: ["productId", "name"],
   data: function data() {
     return {
       smallUnits: '',
@@ -2081,25 +2079,27 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/mvp-ecommerce/public/api/products/' + this.productId).then(function (response) {
         _this.product = response.data.product;
-        console.log(_this.product);
       })["catch"](function (err) {
         return console.error(err);
       });
     },
-    addToCart: function addToCart() {
-      var _this2 = this;
-
-      e.preventDefault();
-      var address = this.address;
+    addToCart: function addToCart($id) {
+      // Needs to create an instance of DB Orders & session cart
+      var name = this.name;
+      var description = this.description;
       var product_id = this.product.id;
       var quantity = this.quantity;
-      axios.post('api/orders/', {
-        address: address,
-        quantity: quantity,
-        product_id: product_id
-      }).then(function (response) {
-        return _this2.$router.push('/cart');
+      var price = this.price;
+      var image = this.image;
+      axios.post('/mvp-ecommerce/public/addToCart', {
+        "name": name,
+        "description": description,
+        "quantity": quantity,
+        "product_id": product_id,
+        "price": price,
+        "image": image
       });
+      console.log(this.product);
     }
   },
   mounted: function mounted() {
@@ -38583,7 +38583,12 @@ var render = function() {
       "form",
       {
         attrs: { method: "POST", enctype: "multipart/form-data" },
-        on: { submit: _vm.addToCart }
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.addToCart($event)
+          }
+        }
       },
       [
         _vm._t("default"),
@@ -38591,54 +38596,58 @@ var render = function() {
         _c("div", { staticClass: "form-group" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", [_vm._v("Please choose a size...")]),
-            _vm._v(" "),
-            _c(
-              "option",
-              {
-                attrs: { name: "small_units" },
-                domProps: { value: _vm.smallUnits }
-              },
-              [
-                _vm._v(
-                  "Small   " +
-                    _vm._s(_vm.product.small_units) +
-                    " units left available. "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "option",
-              {
-                attrs: { name: "medium_units" },
-                domProps: { value: _vm.mediumUnits }
-              },
-              [
-                _vm._v(
-                  "Medium   " +
-                    _vm._s(_vm.product.medium_units) +
-                    " units left available. "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "option",
-              {
-                attrs: { name: "large_units" },
-                domProps: { value: _vm.largeUnits }
-              },
-              [
-                _vm._v(
-                  "Large   " +
-                    _vm._s(_vm.product.large_units) +
-                    " units left available. "
-                )
-              ]
-            )
-          ]),
+          _c(
+            "select",
+            { staticClass: "form-control", attrs: { required: "" } },
+            [
+              _c("option", [_vm._v("Please choose a size...")]),
+              _vm._v(" "),
+              _c(
+                "option",
+                {
+                  attrs: { name: "small_units" },
+                  domProps: { value: _vm.smallUnits }
+                },
+                [
+                  _vm._v(
+                    "Small   " +
+                      _vm._s(_vm.product.small_units) +
+                      " units left available. "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "option",
+                {
+                  attrs: { name: "medium_units" },
+                  domProps: { value: _vm.mediumUnits }
+                },
+                [
+                  _vm._v(
+                    "Medium   " +
+                      _vm._s(_vm.product.medium_units) +
+                      " units left available. "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "option",
+                {
+                  attrs: { name: "large_units" },
+                  domProps: { value: _vm.largeUnits }
+                },
+                [
+                  _vm._v(
+                    "Large   " +
+                      _vm._s(_vm.product.large_units) +
+                      " units left available. "
+                  )
+                ]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "button",

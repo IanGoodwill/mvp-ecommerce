@@ -47,7 +47,7 @@ Route::get( 'checkout', 'ProductController@showCheckout' )->name('shoppingCarts.
 
 Route::get( 'confirmation', 'ProductController@showConfirmation' )->name('shoppingCarts.confirmation');
 
-Route::get('addToCart/{id}', 'ProductController@addToCart');
+Route::post('addToCart', 'ProductController@addToCart');
 
 Route::patch('update-cart', 'ProductController@updateCart');
 

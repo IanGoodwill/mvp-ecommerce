@@ -1,11 +1,11 @@
 <template>
 <div>
 
-<form method="POST" @submit="addToCart" enctype="multipart/form-data">
+<form method="POST" @submit.prevent="addToCart" enctype="multipart/form-data">
     <slot></slot>
   <div class="form-group">
     <label for="sizing-form"><strong>Sizes:</strong></label>
-        <select class="form-control">
+        <select class="form-control" required>
             <option >Please choose a size...</option>
             <option name="small_units" :value="smallUnits">Small   {{ product.small_units }} units left available. </option>
             <option name="medium_units" :value="mediumUnits">Medium   {{ product.medium_units }} units left available. </option>
@@ -15,8 +15,6 @@
   </div>
 </form>
 
-
-
 </div>
 </template>
 
@@ -24,7 +22,8 @@
     export default {
          name: "sizing-form",
          props: [
-             "productId"
+             "productId",
+             "name",
                ],
          data() {
             return {
@@ -38,20 +37,23 @@
             read() {
                 axios.get('/mvp-ecommerce/public/api/products/' + this.productId).then(( response ) => {  
                     this.product = response.data.product;
-                     console.log( this.product);
+                     
                 })
                     .catch((err) => console.error(err));
             },
 
-            addToCart()  {
-                 e.preventDefault()
-
-                let address = this.address
+            addToCart($id)  { // Needs to create an instance of DB Orders & session cart
+                
+                let name = this.name
+                let description = this.description
                 let product_id = this.product.id
                 let quantity = this.quantity
+                let price = this.price
+                let image = this.image
 
-                axios.post('api/orders/', {address, quantity, product_id})
-                     .then(response => this.$router.push('/cart'))
+                axios.post('/mvp-ecommerce/public/addToCart', {"name":name, "description":description, "quantity":quantity, "product_id":product_id, "price":price, "image":image})  
+
+                        console.log( this.product);
             }
         },
         mounted() {
