@@ -22,8 +22,5 @@ Route::post('products/{id}', 'ProductController@sizingForm');
 
 Route::get('/products/{id}', 'ProductController@single');
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::patch('orders/{order}/deliver','OrderController@deliverOrder');
-    Route::resource('/orders', 'OrderController');
-    Route::resource('/products', 'ProductController')->except(['index','show']);
-});
+// Route::get('/showCart', 'ProductController@showCart');
+

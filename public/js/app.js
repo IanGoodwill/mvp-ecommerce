@@ -1917,62 +1917,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cart",
-  props: [],
+  props: ["product_id"],
   data: function data() {
-    return {};
+    return {
+      quantity: ""
+    };
   },
   mounted: function mounted() {},
   computed: {},
-  methods: {}
+  methods: {
+    getCookie: function getCookie() {
+      this.$cookies.get('mvp_ecommerce_session');
+      return "cookie found";
+    },
+    updateCart: function updateCart() {
+      axios.post("/mvp-ecommerce/public/updateCart", {
+        "product_id": product_id,
+        "quantity": quantity
+      }); // update and remove were initially passing product
+    },
+    remove: function remove() {
+      axios.post("/mvp-ecommerce/public/remove", {
+        "product_id": product_id
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -38346,153 +38317,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
+  return _c("div", [
+    _c("td", { staticClass: "actions" }, [
       _c(
-        "table",
+        "button",
         {
-          staticClass: "table table-hover table-condensed",
-          attrs: { id: "cart" }
+          staticClass: "btn btn-info btn-sm update-cart",
+          on: { click: _vm.updateCart }
         },
-        [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { staticStyle: { width: "40%" } }, [_vm._v("Product")]),
-              _vm._v(" "),
-              _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Price")]),
-              _vm._v(" "),
-              _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Size")]),
-              _vm._v(" "),
-              _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Quantity")]),
-              _vm._v(" "),
-              _c(
-                "th",
-                { staticClass: "text-center", staticStyle: { width: "22%" } },
-                [_vm._v("Subtotal")]
-              ),
-              _vm._v(" "),
-              _c("th", { staticStyle: { width: "10%" } })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", { attrs: { "data-th": "Product" } }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-sm-3 hidden-xs" }, [
-                    _c("img", {
-                      staticClass: "img-responsive",
-                      attrs: { src: "#", width: "100", height: "100" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9" }, [
-                    _c("h4", { staticClass: "nomargin" }, [
-                      _vm._v("product name ")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(" product description ")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { "data-th": "Price" } }, [
-                _vm._v("$ product price ")
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { "data-th": "Size" } }, [
-                _c("input", {
-                  staticClass: "form-control text-center",
-                  attrs: { type: "string", value: "Size" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { "data-th": "Quantity" } }, [
-                _c("input", {
-                  staticClass: "form-control text-center",
-                  attrs: { type: "number", value: " product image " }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "td",
-                {
-                  staticClass: "text-center",
-                  attrs: { "data-th": "Subtotal" }
-                },
-                [_vm._v("$total")]
-              ),
-              _vm._v(" "),
-              _c("td", { staticClass: "actions", attrs: { "data-th": "" } }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-info btn-sm update-cart" },
-                  [_c("i", { staticClass: "fa fa-refresh" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-danger btn-sm remove-from-cart" },
-                  [_c("i", { staticClass: "fa fa-trash-o" })]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tfoot", [
-            _c("tr", { staticClass: "visible-xs" }, [
-              _c("td", { staticClass: "text-center" }, [
-                _c("strong", [_vm._v("Total ")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-warning",
-                    attrs: { href: "products" }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-angle-left" }),
-                    _vm._v(" Continue Shopping")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "hidden-xs", attrs: { colspan: "2" } }),
-              _vm._v(" "),
-              _c("td", { staticClass: "hidden-xs text-center" }, [
-                _c("strong", [_vm._v("Total")])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-success float-right",
-                    attrs: { href: "checkout" }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-angle-right" }),
-                    _vm._v(" Continue to Checkout")
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]
+        [_c("i", { staticClass: "fa fa-refresh" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger btn-sm remove-from-cart",
+          on: { click: _vm.remove }
+        },
+        [_c("i", { staticClass: "fa fa-trash-o" })]
       )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38600,7 +38447,9 @@ var render = function() {
             "select",
             { staticClass: "form-control", attrs: { required: "" } },
             [
-              _c("option", [_vm._v("Please choose a size...")]),
+              _c("option", { attrs: { select: "", disabled: "" } }, [
+                _vm._v("Please choose a size...")
+              ]),
               _vm._v(" "),
               _c(
                 "option",

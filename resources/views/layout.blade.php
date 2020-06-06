@@ -27,6 +27,7 @@
         <footer class="text-center">
             <p>E-Store &copy; Copyright 2020</p>
          </footer>
+         @yield('scripts');
     </body>
 
 </html>

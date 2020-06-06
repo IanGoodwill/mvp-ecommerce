@@ -6,7 +6,7 @@
   <div class="form-group">
     <label for="sizing-form"><strong>Sizes:</strong></label>
         <select class="form-control" required>
-            <option >Please choose a size...</option>
+            <option select disabled >Please choose a size...</option>
             <option name="small_units" :value="smallUnits">Small   {{ product.small_units }} units left available. </option>
             <option name="medium_units" :value="mediumUnits">Medium   {{ product.medium_units }} units left available. </option>
             <option name="large_units" :value="largeUnits">Large   {{ product.large_units }} units left available. </option>
@@ -51,9 +51,9 @@
                 let price = this.price
                 let image = this.image
 
-                axios.post('/mvp-ecommerce/public/addToCart', {"name":name, "description":description, "quantity":quantity, "product_id":product_id, "price":price, "image":image})  
-
-                        console.log( this.product);
+                axios.post('/mvp-ecommerce/public/addToCart', {"name":name, "description":description, "quantity":quantity, "product_id":product_id, "price":price, "image":image})
+                
+                console.log( this.product);
             }
         },
         mounted() {

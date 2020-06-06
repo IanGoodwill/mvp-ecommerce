@@ -5,7 +5,10 @@
 @section('content')
 
 @guest
-<h3 class="text-center"> Please sign in to continue </h3>   
+<h3 class="text-center"> Please sign in or join up to continue </h3>   
+<a class="nav-link  mx-auto text-center" href="./">
+    <button type="button" class="btn btn-primary">Back</button>
+</a>
 @endguest
 
 @auth
@@ -91,7 +94,7 @@
                             </div>
                             <div class="col-md-12 mt-4">
                                 <a href="{{ route( 'shoppingCarts.confirmation') }}">
-                                    <button class="btn btn-success btn-lg btn-block">Place Order</button>
+                                    <button class="btn btn-success btn-lg btn-block">Continue to Payment</button>
                                 </a>
                             <div class="col-md-12 mt-4">
                                 <a href="{{ route( 'shoppingCarts.cart') }}" class="btn btn-lg btn-block btn-warning"><i class="fa fa-angle-left"></i> Return to Cart</a>

@@ -49,7 +49,7 @@ Route::get( 'confirmation', 'ProductController@showConfirmation' )->name('shoppi
 
 Route::post('addToCart', 'ProductController@addToCart');
 
-Route::patch('update-cart', 'ProductController@updateCart');
+Route::post('updateCart', 'ProductController@updateCart');
 
-Route::delete('remove-from-cart', 'ProductController@remove');
+Route::post('remove', 'ProductController@remove');
 

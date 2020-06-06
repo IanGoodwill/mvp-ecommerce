@@ -159,6 +159,9 @@ class ProductController extends Controller
      */
     public function showCart()
     {
+        if(session())
+        $cart = session()->get('cart');
+
         return view('shoppingCarts.cart');
     }
 
@@ -183,7 +186,7 @@ class ProductController extends Controller
      */
     public function addToCart( Request $request )
     {
-        //dd($request->product_id);
+        //dd(session('mvp_ecommerce_session'));
 
         $product = Product::find($request->product_id);
  
@@ -208,11 +211,14 @@ class ProductController extends Controller
                         "quantity" => 1,
                         "price" => $product->price,
                         "image" => $product->image,
+                        "product_id" => $product->id
             
                     ]
             ];
  
             session()->put('cart', $cart);
+
+            
 
             return redirect()->back()->with('success', 'Product added to cart successfully!');
             // return "session started";
@@ -235,7 +241,8 @@ class ProductController extends Controller
             "description" => $product->description,
             "quantity" => 1,
             "price" => $product->price,
-            "image" => $product->image
+            "image" => $product->image,
+            "product_id" => $product->id
         ];
  
         session()->put('cart', $cart);
@@ -261,17 +268,19 @@ class ProductController extends Controller
 
             $total = $this->getCartTotal();
 
-           // $htmlCart = view('_header_cart')->render();
+            // $htmlCart = view('_header_cart')->render();
 
-            return response()->json(['msg' => 'Cart updated successfully', 'data' => $htmlCart, 'total' => $total, 'subTotal' => $subTotal]);
+            //return response()->json(['msg' => 'Cart updated successfully', 'data' => $htmlCart, 'total' => $total, 'subTotal' => $subTotal]);
 
-            //session()->flash('success', 'Cart updated successfully');
+            session()->flash('success', 'Cart updated successfully');
         }
     }
 
     public function remove(Request $request)
     {
-        if($request->id) {
+        // dd('$request->product_id');
+        
+        if($request->product_id) {
 
             $cart = session()->get('cart');
 
@@ -284,11 +293,13 @@ class ProductController extends Controller
 
             $total = $this->getCartTotal();
 
-           // $htmlCart = view('_header_cart')->render();
+            // $htmlCart = view('_header_cart')->render();
 
-            return response()->json(['msg' => 'Product removed successfully', 'data' => $htmlCart, 'total' => $total]);
+            // return response()->json(['msg' => 'Product removed successfully', 'data' => $htmlCart, 'total' => $total]);
 
-            //session()->flash('success', 'Product removed successfully');
+            // session()->flash('success', 'Product removed successfully');
+
+            return "Product removed successfully";
         }
     }
 
