@@ -37,6 +37,20 @@ Route::get( 'productSales', 'ProductController@productSales' )->name('products.p
 
 Route::get( 'productFavorites', 'ProductController@productFavorites' )->name('products.productFavorites');
 
+Route::get( 'dashboard', 'ProductController@showDashboard' )->name('admin.dashboard');
+
+Route::get( 'showActiveOrders', 'ProductController@showActiveOrders' )->name('admin.activeOrders');
+
+Route::get( 'showCompletedOrders', 'ProductController@showCompletedOrders' )->name('admin.completedOrders');
+
+Route::get( 'showAdminProducts', 'ProductController@showAdminProducts' )->name('admin.adminProducts');
+
+Route::get( 'showNewProduct', 'ProductController@showNewProduct' )->name('admin.newProduct');
+
+Route::get( 'showEditProduct/{id}', 'ProductController@showEditProduct' )->name('admin.editProduct');
+
+Route::get( 'showUsers}', 'ProductController@showUsers' )->name('admin.allUsers');
+
 Route::post('/favorite/{product}', 'ProductController@favorite');
 
 Route::post('/unFavorite/{product}', 'ProductController@unFavorite');

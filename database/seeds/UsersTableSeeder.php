@@ -24,6 +24,17 @@ class UsersTableSeeder extends Seeder
                 'created_at' => date( "Y-m-d H:i:s" ),
             ));
     }
+    $admin = [
+        [
+            'name' => "Test",
+            'email' => "admin@gmail.com",
+            'password' => bcrypt("testing123"),
+            'created_at' => date( "Y-m-d H:i:s" ),
+            'is_admin' => 1
 
+        ]
+        ];
+
+        DB::table('users')->insert($admin);
     }
 }
