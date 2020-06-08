@@ -22,5 +22,7 @@ Route::post('products/{id}', 'ProductController@sizingForm');
 
 Route::get('/products/{id}', 'ProductController@single');
 
+Route::post('/upload-file', 'ProductController@uploadFile');
+
 // Route::get('/showCart', 'ProductController@showCart');
 

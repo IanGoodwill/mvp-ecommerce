@@ -4,6 +4,11 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
+  @if(Auth::check() && Auth::user()->is_admin == "1")
+  <a class="navbar-brand text-danger" href="{{ route( 'admin.dashboard') }}">Admin</a>
+  @endif
+
   <div class="collapse navbar-collapse text-light bg-dark" id="navbarNavDropdown">
     <ul class="navbar-nav d-flex text-light bg-dark ml-auto">
       <li class="nav-item active dropdown text-white px-2">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -36,6 +37,76 @@ class ProductController extends Controller
 
         return view( 'products.show', compact('product') );
     }
+
+    public function store(Request $request)
+    {
+        if ( $user = Auth::user() ) {
+            $validatedData = $request->validate(array( 
+                'name' => 'required|max:100',
+                'description' => 'required|max:255',
+                'price' => 'required',
+                'brand' => 'required',
+                'small_units' => 'required',
+                'medium_units' => 'required',
+                'large_units' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ));
+
+        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('product-images'), $imageName);
+
+        $product = new Product();
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->price = $validatedData['price'];
+        $product->brand = $validatedData['brand'];
+        $product->small_units = $validatedData['small_units'];
+        $product->medium_units = $validatedData['medium_units'];
+        $product->large_units = $validatedData['large_units'];
+        $product->image = $imageName;
+       
+        $product->save();
+        
+    
+         return redirect('/products')->with('success', 'Product saved.');
+        }// redirect by default
+         return redirect('/products');
+    }
+
+    public function update(Request $request, $id)
+    {
+           
+        if ( $user = Auth::user() ) {
+            $validatedData = $request->validate(array( 
+                'name' => 'required|max:100',
+                'description' => 'required|max:255',
+                'price' => 'required',
+                'brand' => 'required',
+                'small_units' => 'required',
+                'medium_units' => 'required',
+                'large_units' => 'required',
+                
+            ));
+        
+        Product::whereId($id)->update($validatedData);
+
+        return view('admin.dashboard');
+    }
+        return view('products.index');
+    }
+
+
+    public function destroy(Product $product)
+    {
+        $status = $product->delete();
+
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Product Deleted!' : 'Error Deleting Product'
+        ]);
+    }
+
+    
 
     public function single($id)
     {
@@ -114,6 +185,11 @@ class ProductController extends Controller
      */
     public function productFavorites()
     {
+        if ( $user = Auth::user() ) 
+        {
+        $user = Auth::user();
+        }
+
         $products = Product::query()->where('is_favorite', '=', '1')
         ->orderBy('products.id', 'desc')
         ->simplePaginate(9);
@@ -179,6 +255,70 @@ class ProductController extends Controller
     public function showConfirmation()
     {
         return view('shoppingCarts.confirmation');
+    }
+
+    /**
+     * View Admin dashboard.
+     */
+    public function showDashboard()
+    {
+        return view('admin.dashboard');
+    }
+
+    /**
+     * View Admin active orders.
+     */
+    public function showActiveOrders()
+    {
+        return view('admin.activeOrders');
+    }
+
+    /**
+     * View Admin completed orders.
+     */
+    public function showCompletedOrders()
+    {
+        return view('admin.completedOrders');
+    }
+
+    /**
+     * View Admin list of products.
+     */
+    public function showAdminProducts()
+    {
+        $products = Product::query()
+        ->orderBy('products.id', 'desc')
+        ->simplePaginate(20);
+
+        return view('admin.adminProducts', compact('products'));
+    }
+
+    /**
+     * View Admin new product.
+     */
+    public function showNewProduct()
+    {
+        return view('admin.newProduct');
+    }
+
+    /**
+     * View Admin Edit product.
+     */
+    public function showEditProduct( $id )
+    {
+        $product = Product::findOrFail($id);
+
+        return view('admin.editProduct', compact('product'));
+    }
+
+    /**
+     * View Admin User List.
+     */
+    public function showUsers( )
+    {
+        $users = User::all();
+
+        return view('admin.allUsers', compact('users'));
     }
 
     /**
@@ -318,6 +458,36 @@ class ProductController extends Controller
         }
 
         return number_format($total, 2);
+    }
+
+    /**
+     * upload file for new products
+     */
+    public function formSubmit(Request $request)
+    {
+
+        if ( $user = Auth::user() ) 
+        {
+        // Check image.
+        request()->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Default image value.
+        $fileName = '';
+
+        $fileName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('product-images'), $fileName);
+
+
+        $post = new Post();
+        $post->user_id = $user->id;
+        $post->content = '';
+        $post->picture = $fileName;
+        $post->save();
+              
+        return response()->json(['success'=>'You have successfully upload image.']);
+        }
     }
 
 }
