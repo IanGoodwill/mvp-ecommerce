@@ -1919,10 +1919,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cart",
-  props: ["product_id"],
+  props: [],
   data: function data() {
     return {
-      quantity: ""
+      quantity: "",
+      product_id: ""
     };
   },
   mounted: function mounted() {},
@@ -1939,6 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
       }); // update and remove were initially passing product
     },
     remove: function remove() {
+      var product_id = this.product_id;
       axios.post("/mvp-ecommerce/public/remove", {
         "product_id": product_id
       });
@@ -1977,7 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.isFavorited = this.favorited ? true : false;
+    this.isFavorited = this.isfavorite ? true : false;
   },
   computed: {
     isFavorite: function isFavorite() {
@@ -38362,7 +38364,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.isFavorited
+    _vm.isFavorited || _vm.isFavorite == true
       ? _c(
           "a",
           {

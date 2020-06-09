@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a class=" d-inline" href="#" v-if="isFavorited" @click.prevent="unFavorite(product)">
+    <a class=" d-inline" href="#" v-if="isFavorited || isFavorite == true" @click.prevent="unFavorite(product)">
       <i class="fas fa-gift d-inline float-right isFav" aria-hidden="true"></i>
       </a>
     <a class=" d-inline" href="#" v-else @click.prevent="favorite(product)">
@@ -19,7 +19,7 @@ export default {
     };
   },
   mounted() {
-    this.isFavorited = this.favorited ? true : false;
+    this.isFavorited = this.isfavorite ? true : false;
   },
   computed: {
     isFavorite() {

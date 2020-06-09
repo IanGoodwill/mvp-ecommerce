@@ -18,9 +18,15 @@
             return $this->hasMany(Order::class);
         }
 
+        public function favorites()
+        {
+          return $this->hasMany(Favorite::class, 'product_id');
+        }
+
         public function favorited()
         {
-           return (bool) Favorite::where('product_id', $this->id) // need to check
+          return (bool) Favorite::where('user_id', Auth::id())
+            ->where('product_id', $this->id)
             ->first();
         }
       

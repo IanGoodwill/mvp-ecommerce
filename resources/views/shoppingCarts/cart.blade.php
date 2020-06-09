@@ -38,7 +38,7 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     
-                    <td class="actions" data-th="">
+                    <td class="actions">
                             <cart product-id="{{ $details['product_id'] }}"> </cart> 
                     </td>
                 </tr>

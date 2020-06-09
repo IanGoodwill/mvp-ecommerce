@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4">
-                                <a href="{{ route( 'shoppingCarts.confirmation') }}">
+                                <a href="#">
                                     <button class="btn btn-success btn-lg btn-block">Continue to Payment</button>
                                 </a>
                             <div class="col-md-12 mt-4">

@@ -35,7 +35,7 @@ Individual Product
                @csrf  @method('PATCH')
             </sizing-form>
              
-            <favorites :product={{ $product->id }} :isFavorited={{ $product->favorited() ? 'true' : 'false' }}>
+            <favorites :product={{ $product->id }} :favorited="{{ $product->favorited() ? 'true' : 'false' }}">
             </favorites> 
 
           </div>

@@ -11,11 +11,12 @@
 export default {
   name: "cart",
   props: [
-      "product_id",
+      
   ],
   data() {
     return {
-     quantity: ""
+     quantity: "",
+     product_id: ""
     };
   },
   mounted() {
@@ -36,6 +37,8 @@ export default {
         
     },
     remove() {
+       let product_id = this.product_id
+
       axios.post("/mvp-ecommerce/public/remove", { "product_id":product_id } )
         
     },

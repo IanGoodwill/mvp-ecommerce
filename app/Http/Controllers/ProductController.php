@@ -203,10 +203,11 @@ class ProductController extends Controller
     public function favorite( Product $product )
     {
         if ( $user = Auth::user() )
-        $user->favorites()->attach($product->id); // this needs to update is_followed in products database
+        $user->favorites()->attach($product->id); 
+
+        Product::whereId($product->id)->update( ['is_favorite' => '1'] );
         
-       
-        return "success"; 
+        return "succes, cart item favorited "; 
     }
   
     /**
@@ -217,7 +218,9 @@ class ProductController extends Controller
         if ( $user = Auth::user() )
         $user->favorites()->detach($product->id); 
 
-        return "success"; 
+        Product::whereId($product->id)->update( ['is_favorite' => '0'] );
+
+        return "success, cart item unfavorited"; 
     }
 
     /**
@@ -418,18 +421,19 @@ class ProductController extends Controller
 
     public function remove(Request $request)
     {
-        // dd('$request->product_id');
+         dd($request->id);
         
-        if($request->product_id) {
-
+        if($request->id) {
+ 
             $cart = session()->get('cart');
-
-            if(isset($cart[$request->product_id])) {
-
-                unset($cart[$request->product_id]);
-
+ 
+            if(isset($cart[$request->id])) {
+ 
+                unset($cart[$request->id]);
+ 
                 session()->put('cart', $cart);
             }
+ 
 
             $total = $this->getCartTotal();
 
@@ -460,34 +464,7 @@ class ProductController extends Controller
         return number_format($total, 2);
     }
 
-    /**
-     * upload file for new products
-     */
-    public function formSubmit(Request $request)
-    {
-
-        if ( $user = Auth::user() ) 
-        {
-        // Check image.
-        request()->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        // Default image value.
-        $fileName = '';
-
-        $fileName = time().'.'.$request->file->getClientOriginalExtension();
-        $request->file->move(public_path('product-images'), $fileName);
-
-
-        $post = new Post();
-        $post->user_id = $user->id;
-        $post->content = '';
-        $post->picture = $fileName;
-        $post->save();
-              
-        return response()->json(['success'=>'You have successfully upload image.']);
-        }
-    }
+  
+   
 
 }

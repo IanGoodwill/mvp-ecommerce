@@ -26,7 +26,7 @@ Newest Products
                     <p class="text-dark d-inline">
                         <strong>${{ $product->price }}</strong>    
                     </p>
-                    <favorites :product={{ $product->id }} :favorited={{ $product->favorited() ? 'true' : 'false' }}>
+                    <favorites :product={{ $product->id }} :favorited="{{ $product->favorited() ? 'true' : 'false' }}">
                     </favorites>
                     <br>
                 </div>            
