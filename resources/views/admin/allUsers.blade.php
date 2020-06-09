@@ -17,8 +17,8 @@
                    <strong> Email: </strong>  {{ $user->email}}
                 </p>
                 <p>
-                     Created At: <strong>{{ $user->created_at}}</strong>
-                 </p>
+                    Created At: <strong>{{ $user->created_at}}</strong>
+                </p>
             </li>
         </div>       
     </ul>

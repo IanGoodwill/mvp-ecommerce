@@ -107,7 +107,9 @@ class ProductController extends Controller
     }
 
     
-
+    /**
+     * Display a single product.
+     */
     public function single($id)
     {
         $product = Product::findOrFail($id);
@@ -180,7 +182,7 @@ class ProductController extends Controller
         return view('products.productSales', compact('products'));
     }
 
-      /**
+    /**
      * Display a list of products that have been favorited.
      */
     public function productFavorites()

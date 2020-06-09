@@ -72,7 +72,7 @@ Edit Product
                     </div>
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary btn-customized align-bottom" type="submit" value="Update Post">    
+                    <input class="btn btn-primary btn-customized align-bottom" type="submit" value="Update Product">    
                 </div>
             </div>
         </div>

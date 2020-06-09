@@ -1940,7 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
       }); // update and remove were initially passing product
     },
     remove: function remove() {
-      var product_id = this.product_id;
+      var ele = $(this);
       axios.post("/mvp-ecommerce/public/remove", {
         "product_id": product_id
       });

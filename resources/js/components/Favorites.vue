@@ -2,7 +2,7 @@
   <div>
     <a class=" d-inline" href="#" v-if="isFavorited || isFavorite == true" @click.prevent="unFavorite(product)">
       <i class="fas fa-gift d-inline float-right isFav" aria-hidden="true"></i>
-      </a>
+    </a>
     <a class=" d-inline" href="#" v-else @click.prevent="favorite(product)">
       <i class="fas fa-gift d-inline float-right notFav" aria-hidden="false"></i>
     </a>

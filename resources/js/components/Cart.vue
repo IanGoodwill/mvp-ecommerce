@@ -37,7 +37,7 @@ export default {
         
     },
     remove() {
-       let product_id = this.product_id
+       let ele = $(this);
 
       axios.post("/mvp-ecommerce/public/remove", { "product_id":product_id } )
         
